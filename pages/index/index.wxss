@@ -1,4 +1,12 @@
-/**index.wxss**/
+.scroll-view-item{
+  height: 1100rpx;
+}
+.bc_green{
+  background-color:green;
+}
+.bc_red{
+  background-color: red;
+}
 .userinfo {
   display: flex;
   flex-direction: column;
