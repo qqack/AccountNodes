@@ -1,0 +1,6 @@
+<!--dayNoting.wxml-->
+<view class="container">
+  <view class="usermotto">
+    <text class="user-motto">每日记账</text>
+  </view>
+</view>
