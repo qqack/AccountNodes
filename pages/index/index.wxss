@@ -4,10 +4,10 @@
 .bc_green{
   background-color:green;
 }
-.bc_red{
-  background-color: red;
+.bc_blue{
+  background-color: #fff;
 }
-.userinfo {
+.userinfo, .noteTitle, .consumerProj, .consumerMoney{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,4 +26,8 @@
 
 .usermotto {
   margin-top: 200px;
+}
+
+.noteTitle{
+  padding-top: 20px;
 }

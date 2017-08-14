@@ -5,7 +5,10 @@ Page({
     toView: 'red',
     scrollTop: 100,
     motto: '欢迎进入懒球记账！',
-    userInfo: {}
+    userInfo: {},
+    primarySize: 'default',
+    noteTitle: '每日记账',
+    consumerProjArray: ['三餐', '零食', '生活用品', '旅游','房租水电','网购'],
   },
   upper: function (e) {
     console.log(e)
@@ -29,6 +32,12 @@ Page({
   tapMove: function (e) {
     this.setData({
       scrollTop: this.data.scrollTop + 10
+    })
+  },
+  bindPickerChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      index: e.detail.value
     })
   },
   //事件处理函数
