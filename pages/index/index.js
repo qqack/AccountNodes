@@ -1,23 +1,23 @@
 var order = ['red', 'yellow', 'blue', 'green', 'red']
 var app = getApp()
+var util = require('../../utils/util.js') 
 Page({
   data: {
     toView: 'red',
+    chosen: '',
     scrollTop: 100,
     motto: '欢迎进入懒球记账！',
     userInfo: {},
     primarySize: 'default',
     noteTitle: '每日记账',
     consumerProjArray: ['三餐', '零食', '生活用品', '旅游','房租水电','网购'],
+    cons:[]
   },
   upper: function (e) {
-    console.log(e)
   },
   lower: function (e) {
-    console.log(e)
   },
   scroll: function (e) {
-    console.log(e)
   },
   tap: function (e) {
     for (var i = 0; i < order.length; ++i) {
@@ -35,9 +35,32 @@ Page({
     })
   },
   bindPickerChange: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       index: e.detail.value
+    })
+  },
+  formSubmit: function(e){
+    var value = e.detail.value;
+    var time = util.formatToday(new Date()); 
+    //要增加的数组
+    var newarray = [{
+      consProj : value.consProj,
+      consMoney : value.consMoney,
+      consDate: time
+    }];
+    this.data.cons = newarray.concat(this.data.cons);
+    this.setData({
+      'cons': this.data.cons
+    });
+    wx.request({
+      url: 'http://127.0.0.1/api/cons/daycons', //仅为示例，并非真实的接口地址
+      method: 'GET',
+      header: {
+        'content-type': 'application/json'
+      },
+      success: function (res) {
+        console.log(res.data)
+      }
     })
   },
   //事件处理函数

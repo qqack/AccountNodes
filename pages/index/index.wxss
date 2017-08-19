@@ -1,8 +1,8 @@
 .scroll-view-item{
   height: 1100rpx;
 }
-.bc_green{
-  background-color:green;
+.bc_pink{
+  background-color:	LightPink;
 }
 .bc_blue{
   background-color: #fff;
@@ -21,7 +21,7 @@
 }
 
 .userinfo-nickname {
-  color: #aaa;
+  color: Chocolate;
 }
 
 .usermotto {
@@ -30,4 +30,7 @@
 
 .noteTitle{
   padding-top: 20px;
+}
+.consMoneyText{
+  margin-left: 150rpx; 
 }

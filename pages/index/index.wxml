@@ -1,6 +1,6 @@
 <view class="section">
   <scroll-view scroll-y style="height: 1200px;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
-    <view id="green" class="scroll-view-item bc_green">
+    <view id="pink" class="scroll-view-item bc_pink">
       <view class="container">
         <view  bindtap="bindViewTap" class="userinfo">
           <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
@@ -18,7 +18,7 @@
       <form bindsubmit="formSubmit" bindreset="formReset" class="dayNoting">
       <view class="consumerProj">
         <view class="selectTitle">选择消费项目：</view>
-        <picker bindchange="bindPickerChange" value="{{index}}" range="{{consumerProjArray}}">
+        <picker name="consProj" bindchange="bindPickerChange" value="{{consumerProjArray[index]}}" range="{{consumerProjArray}}">
           <view class="picker">
             当前选择：{{consumerProjArray[index]}}
           </view>
@@ -26,10 +26,18 @@
       </view>
       <view class="consumerMoney">
         <view class="selectTitle">输入消费金额:</view>
-        <input placeholder="请输入消费金额" auto-focus type="digit"/>
+        <input name="consMoney" placeholder="请输入消费金额" auto-focus type="digit"/>
       </view>
       <button type="primary" size="{{primarySize}}" bindtap="primary" form-type="submit"> 记上一笔 </button>
       </form>
+      <view class="scroll-view-item bc_blue">
+        <view class="todayCons">今日消费明细：</view>
+        <view wx:for="{{cons}}">
+          <text>{{ item.consProj }}</text>
+          <text class="consMoneyText">{{ item.consMoney }}</text>
+          <text class="consMoneyText">{{ item.consDate }}</text>
+        </view>
+      </view>
     </view>
   </scroll-view>
 </view>
