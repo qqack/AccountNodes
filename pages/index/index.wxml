@@ -32,7 +32,7 @@
       </form>
       <view class="scroll-view-item bc_blue">
         <view class="todayCons">今日消费明细：</view>
-        <view wx:for="{{cons}}">
+        <view wx:for="{{cons}}" wx:key="item" >
           <text>{{ item.consProj }}</text>
           <text class="consMoneyText">{{ item.consMoney }}</text>
           <text class="consMoneyText">{{ item.consDate }}</text>

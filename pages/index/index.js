@@ -11,7 +11,7 @@ Page({
     primarySize: 'default',
     noteTitle: '每日记账',
     consumerProjArray: ['三餐', '零食', '生活用品', '旅游','房租水电','网购'],
-    cons:[]
+    cons:[]  
   },
   upper: function (e) {
   },
@@ -48,13 +48,19 @@ Page({
       consMoney : value.consMoney,
       consDate: time
     }];
+    var newobj={
+      consProj: value.consProj,
+      consMoney: value.consMoney,
+      consDate: time
+    };
     this.data.cons = newarray.concat(this.data.cons);
     this.setData({
       'cons': this.data.cons
     });
     wx.request({
-      url: 'http://127.0.0.1/api/cons/daycons', //仅为示例，并非真实的接口地址
-      method: 'GET',
+      url: 'http://localhost:3003/daycons',
+      method: 'POST',
+      data: newobj,
       header: {
         'content-type': 'application/json'
       },

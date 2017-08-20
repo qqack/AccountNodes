@@ -1,0 +1,16 @@
+{
+  "name": "accountnotes-server",
+  "version": "1.0.0",
+  "description": "懒球记账",
+  "main": "app.js",
+  "scripts": {
+    "mock": "json-server db.json --port 3003"
+  },
+  "author": "qiuqiu",
+  "license": "ISC",
+  "dependencies": {
+    "koa": "^2.3.0",
+    "koa-body": "^2.3.0",
+    "koa-router": "^7.2.1"
+  }
+}

@@ -1,0 +1,7 @@
+{
+allProjects:{},
+allData:{[
+	userId: openid,
+	notes:[{consProj:proj,consMoney:money,consDate:date}]
+	]}
+}
