@@ -35,13 +35,16 @@ Page({
     })
   },
   bindPickerChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       index: e.detail.value
     })
   },
   formSubmit: function(e){
+    var self = this;
     var value = e.detail.value;
-    var time = util.formatToday(new Date()); 
+    var time = util.formatToday(new Date());
+    var timedetail = util.formatTime(new Date()); 
     //要增加的数组
     var newarray = [{
       consProj : value.consProj,
@@ -51,12 +54,8 @@ Page({
     var newobj={
       consProj: value.consProj,
       consMoney: value.consMoney,
-      consDate: time
+      consDate: timedetail
     };
-    this.data.cons = newarray.concat(this.data.cons);
-    this.setData({
-      'cons': this.data.cons
-    });
     wx.request({
       url: 'http://localhost:3003/daycons',
       method: 'POST',
@@ -66,8 +65,19 @@ Page({
       },
       success: function (res) {
         console.log(res.data)
+        self.data.cons = newarray.concat(self.data.cons);
+        self.setData({
+          cons: self.data.cons,
+          dayConsMoney: '',
+          index: -1,
+        })
       }
     })
+  },
+  bindKeyInput: function (e) {
+    this.setData({
+      userInput: e.detail.value
+    });
   },
   //事件处理函数
   bindViewTap: function () {

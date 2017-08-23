@@ -34,3 +34,6 @@
 .consMoneyText{
   margin-left: 150rpx; 
 }
+.weekCons{
+  margin-top: 50rpx;
+}
