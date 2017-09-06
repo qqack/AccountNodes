@@ -1,64 +1,64 @@
 <view class="section">
-  <scroll-view scroll-y style="height: 1200px;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
-    <view id="pink" class="scroll-view-item bc_pink">
-      <view class="container">
-        <view bindtap="bindViewTap" class="userinfo">
-          <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-          <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-        </view>
-        <view class="usermotto">
-          <text class="user-motto">{{motto}}</text>
-        </view>
-      </view>
-    </view>
-    <view id="blue" class="scroll-view-item bc_blue">
-      <view class="noteTitle">
-        <text class="user-motto">{{noteTitle}}</text>
-      </view>
-      <form bindsubmit="formSubmit" bindreset="formReset" class="dayNoting">
-        <view class="consumerProj">
-          <view class="selectTitle">选择消费项目：</view>
-          <picker name="consProj" bindchange="bindPickerChange" value="{{consumerProjArray[index]}}" range="{{consumerProjArray}}">
-            <view class="picker">
-              当前选择：{{consumerProjArray[index]}}
+    <scroll-view scroll-y style="height: 1200px;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+        <view id="pink" class="scroll-view-item bc_pink">
+            <view class="container">
+                <view bindtap="bindViewTap" class="userinfo">
+                    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+                    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+                </view>
+                <view class="usermotto">
+                    <text class="user-motto">{{motto}}</text>
+                </view>
             </view>
-          </picker>
         </view>
-        <view class="consumerMoney">
-          <view class="selectTitle">输入消费金额:</view>
-          <input name="consMoney" value="{{dayConsMoney}}" placeholder="请输入消费金额" type="digit" bindinput="bindKeyInput" />
-        </view>
-        <button type="primary" size="{{primarySize}}" bindtap="primary" form-type="submit"> 记上一笔 </button>
-      </form>
-      <view class="scroll-view-item bc_blue">
-        <view class="todayCons">今日消费明细：</view>
-        <view wx:for="{{cons}}" wx:key="item" class="consItem">
-          <text class="consProjTxt">{{ item.consProj }}</text>
-          <text class="consMoneyTxt">{{ item.consMoney }}</text>
-          <text class="consDateTxt">{{ item.consDate }}</text>
-        </view>
-        <view class="section">
-          <view class="section__title">累计消费查询：</view>
-          <picker mode="date" value="{{startDate}}" start="2017-08-01" end="2050-09-01" bindchange="bindDateChangeStart">
-            <view class="picker">
-              开始日期: {{startDate}}
+        <view id="blue" class="scroll-view-item bc_blue">
+            <view class="noteTitle">
+                <text class="user-motto">{{noteTitle}}</text>
             </view>
-          </picker>
-          <picker mode="date" value="{{endtDate}}" start="2017-08-01" end="2050-09-01" bindchange="bindDateChangeEnd">
-            <view class="picker">
-              结束日期: {{endDate}}
+            <form bindsubmit="formSubmit" bindreset="formReset" class="dayNoting">
+                <view class="consumerProj">
+                    <view class="selectTitle">选择消费项目：</view>
+                    <picker name="consProj" bindchange="bindPickerChange" value="{{consumerProjArray[index]}}" range="{{consumerProjArray}}">
+                        <view class="picker">
+                            当前选择：{{consumerProjArray[index]}}
+                        </view>
+                    </picker>
+                </view>
+                <view class="consumerMoney">
+                    <view class="selectTitle">输入消费金额:</view>
+                    <input name="consMoney" value="{{dayConsMoney}}" placeholder="请输入消费金额" type="digit" bindinput="bindKeyInput" />
+                </view>
+                <button type="primary" size="{{primarySize}}" bindtap="primary" form-type="submit"> 记上一笔 </button>
+            </form>
+            <view class="scroll-view-item bc_blue">
+                <view class="todayCons">今日消费明细：</view>
+                <view wx:for="{{cons}}" wx:key="item" class="consItem">
+                    <text class="consProjTxt">{{ item.consProj }}</text>
+                    <text class="consMoneyTxt">{{ item.consMoney }}</text>
+                    <text class="consDateTxt">{{ item.consDate }}</text>
+                </view>
+                <view class="section">
+                    <view class="section__title">累计消费查询：</view>
+                    <picker mode="date" value="{{startDate}}" start="2017-08-01" end="2050-09-01" bindchange="bindDateChangeStart">
+                        <view class="picker">
+                            开始日期: {{startDate}}
+                        </view>
+                    </picker>
+                    <picker mode="date" value="{{endtDate}}" start="2017-08-01" end="2050-09-01" bindchange="bindDateChangeEnd">
+                        <view class="picker">
+                            结束日期: {{endDate}}
+                        </view>
+                    </picker>
+                </view>
+                <button class="viewCons" size="mini" type="primary" bindtap="viewSelectDaate">点击查询</button>
+                <button class="weekCons" size="mini" type="primary" bindtap="seeWeekConsume">按周</button>
+                <button class="weekCons" size="mini" type="primary">按月</button>
             </view>
-          </picker>
-          </view>
-          <button class="viewCons" size="mini" type="primary" bindtap="viewSelectDaate">点击查询</button>
-          <button class="weekCons" size="mini" type="primary" bindtap="seeWeekConsume">按周</button>
-          <button class="weekCons" size="mini" type="primary">按月</button>
+            <view wx:for="{{allCons}}" wx:key="item">
+                <text>{{ item.consProj }}</text>
+                <text class="consMoneyText">{{ item.consMoney }}</text>
+                <text class="consMoneyText">{{ item.consDate }}</text>
+            </view>
         </view>
-        <view wx:for="{{allCons}}" wx:key="item">
-          <text>{{ item.consProj }}</text>
-          <text class="consMoneyText">{{ item.consMoney }}</text>
-          <text class="consMoneyText">{{ item.consDate }}</text>
-        </view>
-      </view>
-  </scroll-view>
-  </view> 
+    </scroll-view>
+</view>

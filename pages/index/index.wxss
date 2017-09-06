@@ -1,53 +1,64 @@
-.scroll-view-item{
-  height: 1100rpx;
+.scroll-view-item {
+    height: 1100rpx;
 }
-.bc_pink{
-  background-color:	LightPink;
+
+.bc_pink {
+    background-color: LightPink;
 }
-.bc_blue{
-  background-color: #fff;
+
+.bc_blue {
+    background-color: #fff;
 }
-.userinfo, .noteTitle, .consumerProj, .consumerMoney{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+
+.userinfo,
+.noteTitle,
+.consumerProj,
+.consumerMoney {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
+    width: 128rpx;
+    height: 128rpx;
+    margin: 20rpx;
+    border-radius: 50%;
 }
 
 .userinfo-nickname {
-  color: Chocolate;
+    color: Chocolate;
 }
 
 .usermotto {
-  margin-top: 200rpx;
+    margin-top: 200rpx;
 }
 
-.noteTitle{
-  padding-top: 20rpx;
+.noteTitle {
+    padding-top: 20rpx;
 }
-.consItem{
-  display: flex;
-  align-items: center;
+
+.consItem {
+    display: flex;
+    align-items: center;
 }
-.consProjTxt{
-  margin-left: 20rpx;
-  width: 300rpx; 
+
+.consProjTxt {
+    margin-left: 20rpx;
+    width: 300rpx;
 }
-.consMoneyTxt{
-  width: 200rpx;
-  padding-right:100rpx; 
+
+.consMoneyTxt {
+    width: 200rpx;
+    padding-right: 100rpx;
 }
-.consDateTxt{
-  float: right;
-  width: 200rpx;
-  margin-right: 20rpx;
+
+.consDateTxt {
+    float: right;
+    width: 200rpx;
+    margin-right: 20rpx;
 }
-.weekCons{
-  margin-top: 50rpx;
+
+.weekCons {
+    margin-top: 50rpx;
 }
