@@ -11,7 +11,11 @@ Page({
     primarySize: 'default',
     noteTitle: '每日记账',
     consumerProjArray: ['三餐', '零食', '生活用品', '旅游','房租水电','网购'],
-    cons:[]  
+    cons:[],
+    startDate: util.formatToday(new Date()),
+    endDate: util.getNextMonth(new Date()),
+    allCons:[],
+    today: util.formatToday(new Date()),
   },
   upper: function (e) {
   },
@@ -43,21 +47,28 @@ Page({
   formSubmit: function(e){
     var self = this;
     var value = e.detail.value;
-    var time = util.formatToday(new Date());
-    var timedetail = util.formatTime(new Date()); 
+    if(value.consProj === null || value.consMoney === ""){
+        wx.showModal({
+          title: '错误提示',
+          content: '请选择项目和消费金额',
+        })
+        return;
+    }
+    var timedetail = util.formatDetail(new Date()); 
     //要增加的数组
     var newarray = [{
       consProj : value.consProj,
       consMoney : value.consMoney,
-      consDate: time
+      consDate: self.data.today,
     }];
     var newobj={
       consProj: value.consProj,
       consMoney: value.consMoney,
-      consDate: timedetail
+      consDate: self.data.today,
+      consDateDetail: timedetail,
     };
     wx.request({
-      url: 'http://localhost:3003/daycons',
+      url: 'https://accnotes.kchen.cn/daycons',
       method: 'POST',
       data: newobj,
       header: {
@@ -79,6 +90,27 @@ Page({
       userInput: e.detail.value
     });
   },
+  bindDateChangeStart: function(e){
+    this.setData({
+      startDate: e.detail.value
+    })
+  },
+  bindDateChangeEnd: function (e) {
+    this.setData({
+      endDate: e.detail.value
+    })
+  },
+  seeWeekConsume: function (){
+    console.log("查看周消费")
+  },
+  viewSelectDaate: function (){
+    console.log("查看当前选择日期的消费")
+    let startDate = this.data.startDate
+    let endDate = this.data.endDate
+    if(startDate>endDate){
+        console.log("开始日期不能大于结束日期");
+    }
+  },
   //事件处理函数
   bindViewTap: function () {
     wx.navigateTo({
@@ -88,12 +120,25 @@ Page({
   onLoad: function () {
     console.log('onLoad')
     var that = this
+    let today = that.data.today
     //调用应用实例的方法获取全局数据
     app.getUserInfo(function (userInfo) {
       //更新数据
       that.setData({
-        userInfo: userInfo
+        userInfo: userInfo,
       })
+    })
+    wx.request({
+      url: 'https://accnotes.kchen.cn/daycons?consDate='+today,
+      method: 'GET',
+      header: {
+        'content-type': 'application/json'
+      },
+      success: function (res) {
+        that.setData({
+          cons: res.data.reverse()
+        })
+      }
     })
   }
 })

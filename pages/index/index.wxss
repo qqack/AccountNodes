@@ -25,14 +25,28 @@
 }
 
 .usermotto {
-  margin-top: 200px;
+  margin-top: 200rpx;
 }
 
 .noteTitle{
-  padding-top: 20px;
+  padding-top: 20rpx;
 }
-.consMoneyText{
-  margin-left: 150rpx; 
+.consItem{
+  display: flex;
+  align-items: center;
+}
+.consProjTxt{
+  margin-left: 20rpx;
+  width: 300rpx; 
+}
+.consMoneyTxt{
+  width: 200rpx;
+  padding-right:100rpx; 
+}
+.consDateTxt{
+  float: right;
+  width: 200rpx;
+  margin-right: 20rpx;
 }
 .weekCons{
   margin-top: 50rpx;
